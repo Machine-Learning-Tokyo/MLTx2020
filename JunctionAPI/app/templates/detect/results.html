@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+<div class="container">
+    <center>
+        <div><a href="{{ url_for('detect.detect') }}" class="btn btn-info" role="button">Try Again</a></div>
+    </center>
+</div>
+{% endblock %}
