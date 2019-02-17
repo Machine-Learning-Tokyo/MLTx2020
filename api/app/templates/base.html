@@ -1,0 +1,25 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    {% if title %}{{ title }}{% else %}{{ ('Junction Tokyo') }}{% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="container" style="padding-bottom:50px;">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-info" role="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+            {# application content needs to be provided in the app_content block #}
+            {% block app_content %}{% endblock %}
+    </div>
+{% endblock %}
+{% block styles %}
+    {{ super() }}
+    <style>
+        .body { padding-bottom: 300px;}
+    </style>
+{% endblock %}

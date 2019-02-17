@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block head %}
+    {{ super() }}
+    {{ dropzone.load_css() }}
+    {{ dropzone.style('border: 2px dashed #0087F7; margin: 10px 0 10px; min-height: 400px;') }}
+{% endblock %}
+{% block app_content %}
+<br>
+<label for="exampleInputEmail1">Device ID : Camera 1</label><br>
+<label for="exampleInputEmail1">Location : FLOOR3, Building A3</label><br>
+<label for="exampleInputEmail1">Ticket Counter 1</label><br>
+ {{ form.hidden_tag() }}
+    <table style="width: 100%">
+        <tr>
+            <td>{{ dropzone.create(action="detect.detect") }}</td>
+        </tr>
+        <tr>
+            <td style="text-align: center"><button id="upload" class="btn btn-primary">Upload</button></td>
+        </tr>
+    </table>
+    {{ dropzone.load_js() }}
+    {{ dropzone.config(
+        custom_init='
+        this.on("success", function(file, response){
+            window.location="' + url_for("detect.result") +'"
+        });
+       this.on("sending", function(file, xhr, formData) {
+           csrf_name=$("#csrf_token").attr("name");
+           csrf_value=$("#csrf_token").attr("value");
+           formData.append(csrf_name, csrf_value);
+        });
+        ',
+        custom_options="addRemoveLinks: true"
+        ) }}
+{% endblock %}

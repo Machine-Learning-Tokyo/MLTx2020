@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+<br>
+<label for="exampleInputEmail1">Device ID : Camera 1</label><br>
+<label for="exampleInputEmail1">Location : FLOOR3, Building A3</label><br>
+<label for="exampleInputEmail1">Ticket Counter 1</label><br>
+{% if people_count %}<label for="exampleInputEmail1">Total Number of People Detected :{{ people_count }}</label><br>{% endif %}
+<div class="container">
+    {% if file_name %}
+        <div class="col">
+            <div class="col-md-7">
+                <div class="thumbnail">
+                <a href="{{ url_for('static', filename=file_name) }}">
+                    <img src="{{ url_for('static', filename=file_name) }}" alt="" style="width: 100%" class="img-responsive">
+                    <p></p>
+                    </div>
+                </a>
+                </div>
+            </div>
+        </div>
+        <table style="width:100%">
+        <tr>
+            <th>
+                <!-- <div class="col"> -->
+                    <!-- <div class="col-md-4"> -->
+                        <div class="thumbnail">
+                        <a href="{{ url_for('static', filename='emotion_status.png') }}">
+                            <img src="{{ url_for('static', filename='emotion_status.png') }}" alt="" style="width: 100%" class="img-responsive">
+                            <p></p>
+                            </div>
+                        </a>
+                        </div>
+                    <!-- </div> -->
+                <!-- </div> -->
+            </th>
+            <th>
+                <!-- <div class="col"> -->
+                    <!-- <div class="col-md-4"> -->
+                        <div class="thumbnail">
+                        <a href="{{ url_for('static', filename='gender_status.png') }}">
+                            <img src="{{ url_for('static', filename='gender_status.png') }}" alt="" style="width: 100%" class="img-responsive">
+                            <p></p>
+                            </div>
+                        </a>
+                        </div>
+                    <!-- </div> -->
+                <!-- </div> -->
+            </th>
+            <th>
+                <!-- <div class="col"> -->
+                    <!-- <div class="col-md-4"> -->
+                        <div class="thumbnail">
+                        <a href="{{ url_for('static', filename='age_status.png') }}">
+                            <img src="{{ url_for('static', filename='age_status.png') }}" alt="" style="width: 100%" class="img-responsive">
+                            <p></p>
+                            </div>
+                        </a>
+                        </div>
+                    <!-- </div> -->
+                <!-- </div> -->
+            </th>
+        </tr>
+    {% endif %}
+</div>
+{% endblock %}
