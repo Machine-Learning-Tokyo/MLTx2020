@@ -9,3 +9,5 @@ More than half a million people are expected to come to Tokyo for the Olympics 2
 We combined 3 Deep Learning Models and 3 APIs (Twitter, Google Maps, Google Translate). This helps to facilitate Safety, Efficiency and Business Value for the Tokyo Olympics 2020.
 
 **Presentation slides:** https://goo.gl/hBwi4U
+
+![alt text](web_and_mobile.png)
