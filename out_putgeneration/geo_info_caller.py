@@ -11,7 +11,7 @@ def get_geo_info(user_coords, dest_coords, mode='walking'):
   dest_coords = list(map(tuple, dest_coords))
   gmaps = googlemaps.Client(key='AIzaSyDjm1LEi97iX2-DBTu0d2xnAQrO9ElYDE8')
   distance_result = gmaps.distance_matrix(origins=user_coords, destinations=dest_coords, mode=mode)
-  
+
   dests = distance_result['destination_addresses']
   dists = [elem['distance']['text'] for elem in distance_result['rows'][0]['elements']]
   durs = [elem['duration']['text'] for elem in distance_result['rows'][0]['elements']]
