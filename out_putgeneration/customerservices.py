@@ -1,8 +1,12 @@
+from collections import namedtuple
 import pandas as pd
+from geo_info_caller import get_geo_info
+
+GeoCamera = namedtuple('GeoCamera', 'camera address distance duration')
 
 class customerservices:
-
-    def __init__(self):
+    def __init__(self, dur_thr=200):
+        self.dur_thr = dur_thr * 60
         self.serviceType = "return closest camera based on user input and position"
         self.database = pd.read_csv('morerealdata.csv',delimiter=";")
         self.result = pd.DataFrame()
@@ -14,28 +18,24 @@ class customerservices:
                 goodTypeCam.append(cam)
         return(goodTypeCam)
 
+    def get_geo_cameras(self, goodTypeCam, geo_info):
+        geo_cams = []
+        for i, v_dur in enumerate(geo_info.duration_values):
+            if v_dur <= self.dur_thr:
+                geo_cam = GeoCamera(goodTypeCam[i], geo_info.destinations[i], geo_info.distance_texts[i], geo_info.duration_texts[i])
+                geo_cams.append(geo_cam)
+        return geo_cams
+
     def findclosestCam(self, goodTypeCam, userPosition):
-        # return the closest camera
-        closetoyouCam = []
-        for cam in goodTypeCam:
-            # Call API: api(cam.coordX, cam.coordY, userPosition[0], userPosition[1])
-            print("Running API")
-        
-        #Run example:
-        closetoyouCam.append(goodTypeCam[0])
-        closetoyouCam.append(goodTypeCam[len(goodTypeCam)-1])
-        return(closetoyouCam)
+        dest_coords = [tuple([c.coorX, c.coorY]) for c in goodTypeCam]
+        geo_info = get_geo_info(userPosition, dest_coords)
     
-    def returnAllcorrespondingData(self, closetoyouCam):
-        for cam in closetoyouCam:
-            self.result = self.result.append(self.database.loc[self.database['camera'] == cam.databaseID], ignore_index = True)
+    def returnAllcorrespondingData(self, geo_cameras):
+        for geo_cam in geo_cameras:
+            self.result = self.result.append(self.database.loc[self.database['camera'] == geo_cam.camera.databaseID], ignore_index = True)
         return self.result
 
     def solve_request(self, Camlist, Ctype, userPosition):
         goodTypeCam = self.getcamIDfromCtype(Camlist, Ctype)
-        closetoyouCam = self.findclosestCam(goodTypeCam, userPosition)
-        return(self.returnAllcorrespondingData(closetoyouCam))
-
-
-
-
+        geo_cameras = self.findclosestCam(goodTypeCam, userPosition)
+        return(self.returnAllcorrespondingData(geo_cameras))
