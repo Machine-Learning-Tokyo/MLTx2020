@@ -10,4 +10,4 @@ We combined 3 Deep Learning Models and 3 APIs (Twitter, Google Maps, Google Tran
 
 **Presentation slides:** https://goo.gl/hBwi4U
 
-![alt text](web_and_mobile.png)
+![alt text](face_detection_statistics.png)
