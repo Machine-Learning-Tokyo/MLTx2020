@@ -15,7 +15,7 @@ import copy
 import csv
 import shutil
 import sys
-sys.path.append('../../Tiny_Faces_in_Tensorflow')
+sys.path.append('../../TinyFaces')
 from tiny_face_det import detect_from_img_path
 #import tiny_face_eval
 
@@ -47,7 +47,7 @@ def detect():
             age_img_size = run_model_server.age_mdl.input.shape.as_list()[1]
             frame = imutils.resize(opencv_img, width=400)
             (h, w) = frame.shape[:2]
-            img_path = '../../Tiny_Faces_in_Tensorflow/uploaded_imgs/'
+            img_path = '../../TinyFaces/uploaded_imgs/'
             cv2.imwrite(img_path, frame)
             detections = detect_from_img_path(img_path)
             print(detections)
