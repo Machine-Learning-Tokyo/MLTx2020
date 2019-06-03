@@ -11,3 +11,9 @@ We combined 3 Deep Learning Models and 3 APIs (Twitter, Google Maps, Google Tran
 **Presentation slides:** https://goo.gl/hBwi4U
 
 ![alt text](face_detection_statistics.png)
+
+
+# MLT Teams at Junction Tokyo
+
+<p align="center">
+  <img src="https://github.com/Machine-Learning-Tokyo/MLTx2020/blob/master/junction.jpg" width="600"></p>
