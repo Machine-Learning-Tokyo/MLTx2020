@@ -98,7 +98,7 @@ pdf-reports==0.2.3
 peewee==3.7.0
 pexpect==4.6.0
 pickleshare==0.7.5
-Pillow==5.2.0
+Pillow==8.1.1
 pluggy==0.8.1
 prometheus-client==0.4.2
 prompt-toolkit==2.0.7
