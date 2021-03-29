@@ -107,7 +107,7 @@ ptyprocess==0.6.0
 py==1.7.0
 pycparser==2.19
 pydot==1.4.1
-Pygments==2.2.0
+Pygments==2.7.4
 PyJWT==1.5.3
 pylint==2.2.2
 PyMySQL==0.9.2
