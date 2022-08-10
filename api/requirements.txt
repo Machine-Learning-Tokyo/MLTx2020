@@ -84,7 +84,7 @@ mccabe==0.6.1
 micawber==0.3.5
 mistune==0.8.4
 more-itertools==6.0.0
-nbconvert==5.4.0
+nbconvert==6.3.0
 nbformat==4.4.0
 networkx==2.2
 notebook==5.7.2
