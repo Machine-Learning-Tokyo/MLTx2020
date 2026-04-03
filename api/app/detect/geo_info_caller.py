@@ -9,7 +9,7 @@ GeoObj = namedtuple('geo_object', ['destinations', 'distance_texts', 'distance_v
 def get_geo_info(user_coords, dest_coords, mode='walking'):
   user_coords = tuple(user_coords)
   dest_coords = list(map(tuple, dest_coords))
-  gmaps = googlemaps.Client(key='AIzaSyDjm1LEi97iX2-DBTu0d2xnAQrO9ElYDE8')
+  gmaps = googlemaps.Client(key='API_KEY')
   distance_result = gmaps.distance_matrix(origins=user_coords, destinations=dest_coords, mode=mode)
 
   dests = distance_result['destination_addresses']
