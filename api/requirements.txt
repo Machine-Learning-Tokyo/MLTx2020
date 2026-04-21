@@ -121,7 +121,7 @@ python-editor==1.0.3
 python-slugify==1.2.6
 pytz==2017.2
 PyWavelets==1.0.0
-PyYAML==3.13
+PyYAML==5.4
 pyzmq==17.1.2
 qtconsole==4.4.3
 redis==2.10.6
